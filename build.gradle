@@ -24,16 +24,6 @@ tasks.withType(JavaCompile) {
   options.encoding = 'UTF-8'
 }
 
-application {
-  mainModule = 'com.example.remitlytask'
-  mainClass = 'com.example.remitlytask.HelloApplication'
-}
-
-javafx {
-  version = '17.0.6'
-  modules = ['javafx.controls', 'javafx.fxml']
-}
-
 dependencies {
 
   testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
@@ -42,7 +32,10 @@ dependencies {
 }
 
 test {
-useJUnitPlatform()}
+  useJUnitPlatform()
+  testClassesDirs = sourceSets.test.output.classesDirs
+  testClassesDirs = files("C:\\Users\\wojci\\IdeaProjects\\Remitly-Task\\src\\main\\test")
+}
 
 jlink {
   imageZip = project.file("${buildDir}/distributions/app-${javafx.platform.classifier}.zip")
